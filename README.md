@@ -53,12 +53,14 @@ Im Schaubild zu sehen, ist der grobe Aufbau und die Kommunikation der einzelnen 
 ![Medien](https://github.com/user-attachments/assets/231a4d7c-a743-465e-b81a-e9c62eb36ba9)
 ## Arbeitsaufteilung
 Die Arbeit wird etwa 50/50 aufgeteilt.
-Jamie:
-- Backend
-- Docker Compose für Backend, DB, Kafka Server, Loki, Prometheus und Grafana
-Jannik:
-- SensorReporter
-- Docker Compose für SensorReporter
-  - Konfiguration der UUID
+- Jamie:
+  - Frontend
+  - Backend
+  - Docker Compose für Backend, DB, Kafka Server, Loki, Prometheus und Grafana
+- Jannik:
+  - Frontend
+  - SensorReporter
+  - Docker Compose für SensorReporter
+    - Konfiguration der UUID
 ### Weggelassenes bei Krankheitsfällen
 - Frontend
