@@ -49,6 +49,7 @@ Der SensorReporter wird auf den Endgeräten deployed und liesst Sensorendaten au
   - PostgreSQL ist ein leistungsstarkes, Open Source, relationales Datenbanksystem, das für Zuverlässigkeit, Datenintegrität (ACID-Konformität) und Erweiterbarkeit bekannt ist
 ## Schaubild
 Im Schaubild zu sehen, ist der grobe Aufbau und die Kommunikation der einzelnen Services. Die grünen Pfeile stellen dabei Kommunikation zwischen Containern bzw. Services dar, während die blauen für interne Kommunikation innerhalb von Services und die roten für den Fluss der Metrics und Logs stehen.
+
 ![Medien](https://github.com/user-attachments/assets/231a4d7c-a743-465e-b81a-e9c62eb36ba9)
 ## Arbeitsaufteilung
 Die Arbeit wird etwa 50/50 aufgeteilt.
