@@ -1,17 +1,19 @@
 # Bumfuzzle
-Bumfuzzle ist ein Endgeräte-Monitoring-System. Es erlaubt das Deployment eines SensorReporters auf beliebigen Geräten, wo dann Sensoren wie Temperatur, Lüftergeschwindigkeit und weitere ausgelesen werden und in einem Webclient zentral ausgelesen werden können.
+Bumfuzzle ist ein Endgeräte-Monitoring-System. Es erlaubt das Deployment eines sogenannten SensorReporters auf beliebigen Geräten, wo dann Sensoren wie Temperatur, Lüftergeschwindigkeit und weitere ausgelesen werden und in einem Webclient zentral angezeigt werden können.
+
 # Konzept
+Folgende Microservices sollen erstellt werden:
 ## Microservices
 - Backend
 - SensorReporter (x-Mal, auf Endgeräten)
-- Loki
-- Prometheus
+- Loki als Log-Aggregator
+- Prometheus für Monitoring und Alerts
 ### Andere Docker Container
 - Kafka Server
-- Postgres
+- PostgreSQL Datenbank für Backend
 - Grafana
 ## Kommunikation der Microservices
-Die Daten, welche auf den Endgeräten vom SensorReporter gesammelt werden, werden in ein Kafka-Topic geschrieben. Der Key dafür wurde vorgängig dem User im Client gegeben. Dieser wird dann in der Konfigurationsdatei des SensorReporters gesetzt. Der Key setzt sich dabei aus der ID des Users und einer einzigartigen Geräte-ID zusammen. Das Backend wiederum liest dann dieses Kafka-Topic aus, schreibt die Daten in die Datenbank und wenn der Client verbunden ist, werden diese Daten über eine Websocket-Verbindung direkt an diesen Geschickt.
+Die Daten, welche auf den Endgeräten vom SensorReporter gesammelt werden, werden in ein Kafka-Topic geschrieben. Im Webclient kann man als User neue Geräte erfassen. Für jedes dieser Geräte erhält meinen einen eindeutigen Key. Dieser wird dann in der Konfigurationsdatei des SensorReporters gesetzt. Der Key setzt sich dabei aus der ID des Users und einer einzigartigen Geräte-ID zusammen. Das Backend wiederum liest dann dieses Kafka-Topic aus, schreibt die Daten in die Datenbank und wenn der Client verbunden ist, werden diese Daten über eine Websocket-Verbindung direkt an diesen Geschickt.
  
 Das Backend wiederum exposed eine REST-API, über welche unter anderem die Authentication, die Erstellung neuer Geräte und das Auslesen von historischen Sensordaten gehandhabt werden.
  
